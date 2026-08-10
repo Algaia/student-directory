@@ -1,29 +1,69 @@
 /* src/components/StudentCard.module.css */
 
-.card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 12px;
-  background-color: #ffffff;
-  color: #333333;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  font-family: Arial, sans-serif;
+:root {
+  --green-darkest: #38452A;
+  --green-primary: #5F6F3A;
+  --green-mid: #7E8B52;
+  --green-accent: #A4AE7A;
+  --bg-lightest: #D8D8C6;
 }
 
-.probation {
-  border: 2px solid #d9534f;
-  background-color: #fff0f0;
-  color: #721c24;~
+.card {
+  background-color: var(--green-mid);
+  color: #FFFFFF; 
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  position: relative;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  color: #FFFFFF;
+  margin: 0 0 16px 0;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.card p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--green-accent); 
+}
+
+.card p strong {
+  font-weight: bold;
+  color: #FFFFFF;
 }
 
 .badge {
   display: inline-block;
-  background-color: #28a745;
-  color: white;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 12px;
-  margin-top: 8px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  text-transform: uppercase;
+  margin-top: 16px;
+  margin-right: 4px; 
+  letter-spacing: 0.5px;
+}
+
+.card .deansListBadge {
+  background-color: var(--green-darkest);
+  color: var(--green-accent);
+}
+
+
+.card .probationBadge {
+  background-color: var(--green-darkest);
+  color: #f1f3f5; 
 }
