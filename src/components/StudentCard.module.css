@@ -1,0 +1,29 @@
+/* src/components/StudentCard.module.css */
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px;
+  background-color: #ffffff;
+  color: #333333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-family: Arial, sans-serif;
+}
+
+.probation {
+  border: 2px solid #d9534f;
+  background-color: #fff0f0;
+  color: #721c24;~
+}
+
+.badge {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+  margin-top: 8px;
+}
