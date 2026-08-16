@@ -7,31 +7,50 @@ import DirectoryControls from './components/DirectoryControls';
 export default function App() {
   const [students, setStudents] = useState(initialStudents);
   const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'deansLister' |
-'probation'
-  // TODO 1: handleAddStudent(newStudent)
-    // - give the new student a unique id (e.g. Date.now())
-    // - add it to students WITHOUT mutating the original array (spread into a new array)
-  
-  // TODO 2: visibleStudents
-    // - start from `students`
-    // - if searchTerm is not empty, keep only students whose name includes it (case-insensitive)
-    // - then apply statusFilter:
-    // 'deansLister' -> keep only gwa <= 1.75
-    // 'probation' -> keep only status === 'On Probation'
-    // 'all' -> no extra filtering
-    // - compute this fresh every render — do NOT put it in its own useState
+  const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'deansLister' | 'probation'
+
+  // TODO 1: Add new student immutably with a unique ID
+  const handleAddStudent = (newStudent) => {
+    const studentWithId = {
+      ...newStudent,
+      id: Date.now()
+    };
+    setStudents((prevStudents) => [...prevStudents, studentWithId]);
+  };
+
+  // TODO 2: Derived visibleStudents fresh on every render
+  const visibleStudents = students.filter((student) => {
+    const matchesSearch = student.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    if (!matchesSearch) return false;
+
+    if (statusFilter === 'deansLister') {
+      return student.gwa <= 1.75;
+    }
+    if (statusFilter === 'probation') {
+      return student.status === 'On Probation';
+    }
+
+    return true; // 'all'
+  });
+
   return (
     <div>
       <h1>Student Directory</h1>
-      <StudentForm onAdd={/* TODO 3: pass handleAddStudent */} />
+      {/* TODO 3: Pass handleAddStudent */}
+      <StudentForm onAdd={handleAddStudent} />
+      
       <DirectoryControls
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
         statusFilter={statusFilter}
         onStatusFilterChange={setStatusFilter}
-    />
-      <StudentDirectory students={/* TODO 4: pass visibleStudents, NOT students */} />
+      />
+      
+      {/* TODO 4: Pass visibleStudents */}
+      <StudentDirectory students={visibleStudents} />
     </div>
   );
 }
