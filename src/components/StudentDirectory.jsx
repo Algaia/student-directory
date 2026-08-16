@@ -1,25 +1,26 @@
-// src/components/StudentDirectory.jsx
 import StudentCard from './StudentCard';
 
 export default function StudentDirectory({ students }) {
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)', 
-    gap: '24px', 
-    maxWidth: '1200px', 
-    margin: '40px auto', 
-    padding: '0 20px',
-  };
+  if (!students || students.length === 0) {
+    return (
+      <p style={{ fontStyle: 'italic', color: '#666', marginTop: '20px' }}>
+        No students found matching your criteria.
+      </p>
+    );
+  }
 
   return (
-    <div>
-      <h2>Student Directory</h2>
-      {/* Grid container */}
-      <div style={gridStyle}>
-        {students.map((student) => (
-          <StudentCard key={student.id} student={student} />
-        ))}
-      </div>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+        gap: '16px',
+        marginTop: '20px',
+      }}
+    >
+      {students.map((student) => (
+        <StudentCard key={student.id} student={student} />
+      ))}
     </div>
   );
 }
