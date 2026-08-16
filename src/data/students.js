@@ -1,5 +1,5 @@
 // src/data/students.js
-export const students = [
+export const initialStudents = [
   {
     id: 1,
     name: "Juan Dela Cruz",
@@ -21,7 +21,7 @@ export const students = [
     name: "Crisostomo Ibarra",
     course: "BSIT",
     yearLevel: 4,
-    status: "On Probation", // Special probation styling requirement
+    status: "On Probation", // Probation requirement met
     gwa: 2.25
   },
   {
