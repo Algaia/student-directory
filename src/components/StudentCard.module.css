@@ -1,11 +1,11 @@
-/* src/components/StudentCard.module.css */
-
 :root {
   --green-darkest: #38452A;
   --green-primary: #5F6F3A;
   --green-mid: #7E8B52;
   --green-accent: #A4AE7A;
   --bg-lightest: #D8D8C6;
+  --probation-bg: #8B3A3A;
+  --probation-border: #D9534F;
 }
 
 .card {
@@ -26,6 +26,12 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Distinct card border/background highlight when On Probation */
+.probationCard {
+  border: 2px solid var(--probation-border);
+  background-color: var(--probation-bg);
+}
+
 .card h3 {
   color: #FFFFFF;
   margin: 0 0 16px 0;
@@ -38,6 +44,10 @@
   font-size: 0.95rem;
   line-height: 1.4;
   color: var(--green-accent); 
+}
+
+.probationCard p {
+  color: #F8D7DA;
 }
 
 .card p strong {
@@ -57,13 +67,12 @@
   letter-spacing: 0.5px;
 }
 
-.card .deansListBadge {
+.deansListBadge {
   background-color: var(--green-darkest);
   color: var(--green-accent);
 }
 
-
-.card .probationBadge {
-  background-color: var(--green-darkest);
-  color: #f1f3f5; 
+.probationBadge {
+  background-color: #D9534F;
+  color: #FFFFFF; 
 }
